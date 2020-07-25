@@ -8,7 +8,9 @@ router.get('/',homeController.home);
 
 router.use('/addHobbie',require('./addHobbie'));
 
-router.use('/remove-hobby',require('./removeHobby'))
+router.use('/remove-hobby',require('./removeHobby'));
+
+router.use('/update-hobby',require('./updateHobby'));
 
 
 

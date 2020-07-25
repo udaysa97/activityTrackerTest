@@ -13,20 +13,23 @@
                 <%} else{%>
                     <h1>Please Add Hobbies</h1>
                 <%}%>
+                
                 <% for(let hob of hobbies) { %> 
+                    
                     <div id = 'hobby-box'>
                         <p>Activity:<h3><%= hob.activityName %> </h3></p>
                         <p>Today's Status:<h3><%= hob.activityProperties[0][1] %></h3></p>
                         <div>
                             <button type="button"><a href="remove-hobby/?id=<%= hob._id %>">remove hobby</a> </button>
                             <% if(hob.activityProperties[0][1] === "None") {%>
-                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">completed</a> </button>
-                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">not done</a> </button>
+                                <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=Done">completed</a> </button>
+                                <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=NotDone">not done</a> </button>
                             <%} else if(hob.activityProperties[0][1] === "Done") {%>
-                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">not done</a> </button>
+                                <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=NotDone">not done</a> </button>
                             <%}else{%>
-                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">completed</a> </button>
+                                <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=Done">completed</a> </button>
                             <%}%>
+                            
                            
                             
                         </div>
