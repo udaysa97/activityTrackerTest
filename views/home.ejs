@@ -3,6 +3,37 @@
         <title><%= title %></title>
     </head>
     <body>
-        this will be body and content sent is: <%= bodyContent %>
+        <form action="/addHobbie" method="POST" id="activity-form">
+            <input type="text" name="activity_name" placeholder="Add New Activity">
+            <button type="submit">Add to Track</button>
+        </form>       
+        <div id='hobby-window'>
+                <% if(hobbies.length > 0) {%>
+                    <h1> HERE ARE YOUR HOBBIES</h1>
+                <%} else{%>
+                    <h1>Please Add Hobbies</h1>
+                <%}%>
+                <% for(let hob of hobbies) { %> 
+                    <div id = 'hobby-box'>
+                        <p>Activity:<h3><%= hob.activityName %> </h3></p>
+                        <p>Today's Status:<h3><%= hob.activityProperties[0][1] %></h3></p>
+                        <div>
+                            <button type="button"><a href="remove-hobby/?id=<%= hob._id %>">remove hobby</a> </button>
+                            <% if(hob.activityProperties[0][1] === "None") {%>
+                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">completed</a> </button>
+                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">not done</a> </button>
+                            <%} else if(hob.activityProperties[0][1] === "Done") {%>
+                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">not done</a> </button>
+                            <%}else{%>
+                                <button type="button"><a href="delete-contact/?id=<%= hob._id %>">completed</a> </button>
+                            <%}%>
+                           
+                            
+                        </div>
+                    </div>
+                <%}%>
+             
+
+    </div>
     </body>
 </html>
