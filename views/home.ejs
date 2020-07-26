@@ -9,7 +9,7 @@
         </form>       
         <div id='hobby-window'>
                 <% if(hobbies.length > 0) {%>
-                    <h1> HERE ARE YOUR HOBBIES</h1>
+                    <h1> HERE ARE YOUR HOBBIES</h1> 
                 <%} else{%>
                     <h1>Please Add Hobbies</h1>
                 <%}%>
@@ -18,13 +18,15 @@
                     
                     <div id = 'hobby-box'>
                         <p>Activity:<h3><%= hob.activityName %> </h3></p>
-                        <p>Today's Status:<h3><%= hob.activityProperties[0][1] %></h3></p>
+                        <!-- Pick status from the last index of dates array (Stored in reverse order)-->
+                        <p>Today's Status:<h3><%= hob.activityProperties[6][1] %></h3></p>
                         <div>
                             <button type="button"><a href="remove-hobby/?id=<%= hob._id %>">remove hobby</a> </button>
-                            <% if(hob.activityProperties[0][1] === "None") {%>
+                            <!-- Add button acording to the current status-->
+                            <% if(hob.activityProperties[6][1] === "None") {%>
                                 <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=Done">completed</a> </button>
                                 <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=NotDone">not done</a> </button>
-                            <%} else if(hob.activityProperties[0][1] === "Done") {%>
+                            <%} else if(hob.activityProperties[6][1] === "Done") {%>
                                 <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=NotDone">not done</a> </button>
                             <%}else{%>
                                 <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=0&updateTo=Done">completed</a> </button>

@@ -1,3 +1,5 @@
+//code to set up conection to mongoose. 
+
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/activity-tracker-db');

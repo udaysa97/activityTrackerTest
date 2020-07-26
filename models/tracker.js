@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// Schema to contain activity name and correspondind array of 7 days and respective status
 const trackerSchema = new mongoose.Schema({
     activityName:{
         type:String,
