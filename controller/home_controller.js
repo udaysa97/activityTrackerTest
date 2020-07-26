@@ -13,7 +13,7 @@ module.exports.home = (req,res)=>{
             var date = moment(hobbies[0].activityProperties[6][0],'DD-MM-YYYY');
             console.log(date.toString());
             var today = moment();
-            today = today.add(2,'days');
+            //today = today.add(2,'days');
             var diff = today.diff(date,'days');
             let count = diff - 1;
             console.log('difference is'+diff);
