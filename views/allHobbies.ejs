@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <form action="/addHobbie" method="POST" id="activity-form">
+            <input type="text" name="activity_name" placeholder="Add New Activity">
+            <button type="submit">Add to Track</button>
+        </form>       
+        <div id='hobby-window'>
+                <% if(hobbies.length > 0) {%>
+                    <h1> Hobbies track for Last 7 days</h1> 
+                    <button type="button"><a href="view-hobby">Go to home</a> </button>
+                <%} else{%>
+                    <h1>Please Add Hobbies</h1>
+                <%}%>
+                <!-- To help Keep track of index or date which will be set as completed-->
+               
+                <% for(let hob of hobbies) { %> 
+                    <hr>
+                    <% let indexOfItem = 0 %>
+                    <div id = 'hobby-box'>
+                        <h2>Activity:<h2 style="color: crimson;"><%= hob.activityName %> </h2></h2>
+                        <button type="button"><a href="remove-hobby/?id=<%= hob._id %>">remove hobby</a> </button>
+                        <!-- Pick status from the last index of dates array (Stored in reverse order)-->
+                       
+                        <% for(let dayhob of hob.activityProperties) { %> 
+                            <div>
+                                <p>Date:<%=  dayhob[0]  %><h3> Status:<%= dayhob[1] %></h3></p>                                
+                                <!-- Add button acording to the current status-->
+                                <% if(dayhob[1] === "None") {%>
+                                    <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=<%= indexOfItem%>&updateTo=Done">completed</a> </button>
+                                    <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=<%= indexOfItem%>&updateTo=NotDone">not done</a> </button>
+                                <%} else if(dayhob[1] === "Done") {%>
+                                    <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=<%= indexOfItem%>&updateTo=NotDone">not done</a> </button>
+                                <%}else{%>
+                                    <button type="button"><a href="update-hobby/?id=<%= hob._id %>&index=<%= indexOfItem%>&updateTo=Done">completed</a> </button>
+                                <%}%>
+                                
+                               
+                                
+                            </div>
+                            <% indexOfItem = indexOfItem + 1; %>
+
+                        <% } %>
+                        
+                    </div>
+                    <hr>
+                <%}%>
+             
+
+    </div>
+    </body>
+</html>

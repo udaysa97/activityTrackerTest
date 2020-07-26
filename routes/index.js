@@ -12,6 +12,8 @@ router.use('/remove-hobby',require('./removeHobby'));
 
 router.use('/update-hobby',require('./updateHobby'));
 
+router.use('/view-hobby',require('./viewHobby'));
+
 
 
 module.exports = router;
