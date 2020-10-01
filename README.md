@@ -44,3 +44,5 @@ User can remove or change the status of hobby as logically allowed
 3) Make small cahnges like make back to home button work and change name of an added acivity etc.
 
 * Anyone wants to contribute please do*
+
+## Steps to Run this project
